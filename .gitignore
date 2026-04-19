@@ -2,3 +2,10 @@
 /FEVERDataset
 /LIAR
 /ISOT_News_Dataset
+/*.zip
+/merged_dataset.csv
+/models/
+/logs/
+/fake_news_model/
+/fake_news_model_final/
+/*.png
