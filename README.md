@@ -41,6 +41,14 @@ Follow these steps in order to process the data and train the model:
 
 ### Step 1: Data Unification
 Merge the four datasets into a single standardized CSV file.
+
+##IMPORTANT --
+
+  LINK FOR THE DATASETS ;
+  https://drive.google.com/drive/folders/1Vn-lvU80o0Q3CioFA3VIcY2Dol7ClWNR?usp=sharing
+
+  put each of the dataset folder in the root directory before running any script ;
+  
 ```bash
 python data_unification.py
 ```
