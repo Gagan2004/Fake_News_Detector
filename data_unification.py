@@ -13,7 +13,8 @@ def load_isot():
     df = pd.concat([true_df, fake_df])
     # Combine title and text
     df['text_combined'] = df['title'] + " " + df['text']
-    return df[['text_combined', 'label']].rename(columns={'text_combined': 'text'})
+    df['source'] = 'ISOT'
+    return df[['text_combined', 'label', 'source']].rename(columns={'text_combined': 'text'})
 
 def load_liar():
     print("Loading LIAR dataset...")
@@ -38,7 +39,8 @@ def load_liar():
     df['label'] = df['Label'].apply(map_liar)
     df = df.dropna(subset=['label'])
     df['label'] = df['label'].astype(int)
-    return df[['Text', 'label']].rename(columns={'Text': 'text'})
+    df['source'] = 'LIAR'
+    return df[['Text', 'label', 'source']].rename(columns={'Text': 'text'})
 
 def load_fever():
     print("Loading FEVER dataset...")
@@ -47,7 +49,8 @@ def load_fever():
     # SUPPORTS -> 0, REFUTES -> 1
     df = df[df['label'].isin(['SUPPORTS', 'REFUTES'])]
     df['label'] = df['label'].map({'SUPPORTS': 0, 'REFUTES': 1})
-    return df[['claim', 'label']].rename(columns={'claim': 'text'})
+    df['source'] = 'FEVER'
+    return df[['claim', 'label', 'source']].rename(columns={'claim': 'text'})
 
 def load_fakenewsnet():
     print("Loading FakeNewsNet dataset...")
@@ -66,7 +69,8 @@ def load_fakenewsnet():
             dfs.append(temp_df[['text_combined', 'label']])
     
     df = pd.concat(dfs)
-    return df.rename(columns={'text_combined': 'text'})
+    df['source'] = 'FakeNewsNet'
+    return df.rename(columns={'text_combined': 'text'})[['text', 'label', 'source']]
 
 def main():
     isot = load_isot()
